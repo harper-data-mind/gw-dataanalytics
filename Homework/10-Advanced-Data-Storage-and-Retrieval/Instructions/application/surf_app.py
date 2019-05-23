@@ -5,6 +5,9 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
+start = '9999-12-31'
+end = '9999-12-31'
+
 
 class DateForm (Form):
 
@@ -12,19 +15,21 @@ class DateForm (Form):
     end = StringField('End Date:', [validators.InputRequired()])
 
 
-routes = """Welcome to the your next Hawaii Surf vacation!!!<br/>
+routes = """<br/>
 Visit the following pages to find the best weather for your next vacation:<br/>
 <br/>
 <b>/api/v1.0/precipitation</b> - View 12 months of precipitation from 9 weather stations in Hawaii<br/>
 <b>/api/v1.0/stations</b> - View the minimum, maximum, and average temperature for each weather station<br/>
 <b>/api/v1.0/temperature<b/> - Temperature data<br/>
-<b>/api/v1.0/[start]<b/> - View minimum, maximum, and average temperature for all dates starting with your [start] date<br/>
-<b>/api/v1.0/[start]/[end]<b/> - View minimum, maximum, and average temperature for all dates between your [start] and [end] date<br/>
+<b>/api/v1.0/starttrip<b/> - Historic min, max, and avg temperature for all dates after your trip starts<br/>
+<b>/api/v1.0/wholetrip<b/> - Historic min, max, and avg temperature for the duration of your trip<br/>
 """
 
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 def available_routes():
+    global start
+    global end
 
     form = DateForm(request.form)
 
@@ -34,15 +39,13 @@ def available_routes():
         end = request.form['end']
         print(start, " ", end)
 
-    if form.validate():
-        # Save the comment here.
-        flash("Great! You're trip starts on "+start+" and ends on "+end+"!")
-    else:
-        flash('Error: All the form fields are required.')
+        if form.validate():
+            # Save the comment here.
+            flash("Great! You're trip runs from "+start+" through "+end+"!<br/>"+routes)
+        else:
+            flash('Error: All the form fields are required.')
 
     return render_template('./surf_app.html', form=form)
-
-    return routes
 
 
 @app.route('/api/v1.0/precipitation')
@@ -60,12 +63,12 @@ def temperature():
     return "Hello Temperature!"
 
 
-@app.route('/api/v1.0/<start>')
+@app.route('/api/v1.0/starttrip')
 def start_only(start):
     return "Start Date is " + start
 
 
-@app.route('/api/v1.0/<start>/<end>')
+@app.route('/api/v1.0/wholetrip')
 def start_end(start, end):
     return "Start Date is " + start + " and the End Date is " + end
 

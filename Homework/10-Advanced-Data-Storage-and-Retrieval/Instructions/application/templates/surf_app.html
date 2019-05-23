@@ -3,41 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Surf's Up!</title>
-        <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
-        <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-<h2>Hawaii Surf Vacation Planner</h2>
-<form action="" method="post" role="form">
-    { { form.csrf }}
-<div class="form-group">
-      <label for="start">Start Date:</label>
-<input type="text" class="form-control" id="start" name="start" placeholder="When does your trip start?">
+    <div class="container">
+        <h2>Welcome to the your next Hawaii Surf vacation!!!</h2>
+            <form action="" method="post" role="form">
+                {{form.csrf}}
+                <div class="form-group">
+                    <label for="start">When does your trip start:</label>
+                    <input type="text" class="form-control" id="start" name="start" placeholder="YYYY-MM-DD">
 
-<label for="end">End Date:</label>
-<input type="text" class="form-control" id="end" name="end" placeholder="When does your trip end?">
+                    <label for="end">When does your trip end:</label>
+                    <input type="text" class="form-control" id="end" name="end" placeholder="YYYY-MM-DD">
 
-</div>
-<button type="submit" class="btn btn-success">Sign Up</button>
-</form>{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
+                </div>
+            <button type="submit" class="btn btn-success">Let's Travel</button>
+            </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% if "Error" not in message[1]: %}
+                        <div class="alert alert-info">
+                        <strong>Success! </strong> {{message[1]|safe}}</div>
+                    {% endif %}
+                    {% if "Error" in message[1]: %}
+                        <div class="alert alert-warning">
+                        {{message[1]}}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-{% for message in messages %}
-{% if "Error" not in message[1]: %}
-<div class="alert alert-info">
-                <strong>Success! </strong> { { message[1] }}</div>
-{% endif %}
-
-{% if "Error" in message[1]: %}
-<div class="alert alert-warning">
-                { { message[1] }}</div>
-{% endif %}
-{% endfor %}
-{% endif %}
-{% endwith %}
-
-</div>
+    </div>
 
 </body>
 </html>

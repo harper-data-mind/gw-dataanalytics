@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="192c642d-b22f-4d4a-8de0-1f6c0537132e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/surf_app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/surf_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/surf_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/templates/surf_app.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/surf_app.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,40 +21,49 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="1" />
+          <entry key="html" value="2" />
           <entry key="py" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="1" />
+          <entry key="HTML" value="2" />
           <entry key="Python" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="136" />
-          <entry key="py" value="122" />
+          <entry key="html" value="344" />
+          <entry key="py" value="528" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="136" />
-          <entry key="Python" value="122" />
+          <entry key="HTML" value="344" />
+          <entry key="Python" value="528" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/surf_app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="595">
+              <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/templates/surf_app.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="29" lean-forward="true" selection-start-line="23" selection-start-column="72" selection-end-line="24" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -75,6 +85,8 @@
       <list>
         <option value="$PROJECT_DIR$/surf_app.html" />
         <option value="$PROJECT_DIR$/surf_app.py" />
+        <option value="$PROJECT_DIR$/application/surf_app.py" />
+        <option value="$PROJECT_DIR$/application/templates/surf_app.html" />
       </list>
     </option>
   </component>
@@ -190,11 +202,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/surf_app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="595">
+          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/templates/surf_app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="29" lean-forward="true" selection-start-line="23" selection-start-column="72" selection-end-line="24" selection-end-column="29" />
         </state>
       </provider>
     </entry>
