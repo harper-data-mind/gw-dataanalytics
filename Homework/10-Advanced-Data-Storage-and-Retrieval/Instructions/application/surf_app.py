@@ -1,18 +1,30 @@
-from flask import Flask, request, flash, render_template
+from flask import Flask, request, flash, render_template, g
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
+
 start = '9999-12-31'
 end = '9999-12-31'
-
 
 class DateForm (Form):
 
     start = StringField('Start Date:', [validators.InputRequired()])
     end = StringField('End Date:', [validators.InputRequired()])
+
+def get_start(value):
+    db = getattr(g, 'start', None)
+    if db is None:
+        db = g.start = value
+    return db
+
+def get_end(value):
+    db = getattr(g, 'end', None)
+    if db is None:
+        db = g.end = value
+    return db
 
 
 routes = """<br/>
@@ -35,13 +47,15 @@ def available_routes():
 
     print(form.errors)
     if request.method == 'POST':
-        start = request.form['start']
-        end = request.form['end']
-        print(start, " ", end)
+        startdate = request.form['start']
+        enddate = request.form['end']
+        print(startdate, " ", enddate)
 
         if form.validate():
             # Save the comment here.
-            flash("Great! You're trip runs from "+start+" through "+end+"!<br/>"+routes)
+            flash("Great! You're trip runs from "+startdate+" through "+enddate+"!<br/>"+routes)
+            start = get_start(start)
+            end = get_end(end)
         else:
             flash('Error: All the form fields are required.')
 
@@ -64,13 +78,16 @@ def temperature():
 
 
 @app.route('/api/v1.0/starttrip')
-def start_only(start):
-    return "Start Date is " + start
+#start = getattr(g, 'start')
+def start_only():
+    global start
+    startdate = get_start(start)
+    return "Start Date is " + startdate
 
 
 @app.route('/api/v1.0/wholetrip')
 def start_end(start, end):
-    return "Start Date is " + start + " and the End Date is " + end
+    return "Start Date is " + g.start + " and the End Date is " + g.end
 
 
 if __name__ == '__main__':
